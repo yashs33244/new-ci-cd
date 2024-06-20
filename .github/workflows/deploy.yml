@@ -36,13 +36,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          echo "Pulling latest Docker image..."
-          sudo docker pull yashs3324/my_paytm:latest || exit 1
-          echo "Stopping existing container..."
+          sudo docker pull yashs3324/my_paytm:latest
           sudo docker stop web-app || true
-          echo "Removing existing container..."
           sudo docker rm web-app || true
-          echo "Running new container..."
-          sudo docker run -d --name web-app -p 3005:3000 yashs3324/my_paytm:latest || exit 1
-          echo "Deployment completed successfully!"
-    
+          sudo docker run -d --name web-app -p 3005:3000 yashs3324/my_paytm:latest
